@@ -1,0 +1,36 @@
+// 颜色
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$danger-color: #e74c3c;
+$warning-color: #f39c12;
+$info-color: #9b59b6;
+
+$text-color: #333;
+$text-secondary: #666;
+$text-light: #909399;
+
+$bg-color: #f9f9f9;
+$border-color: #e0e0e0;
+
+// 间距
+$spacing-unit: 8px;
+$spacing-1: $spacing-unit; // 8px
+$spacing-2: $spacing-unit * 2; // 16px
+$spacing-3: $spacing-unit * 3; // 24px
+$spacing-4: $spacing-unit * 4; // 32px
+$spacing-5: $spacing-unit * 5; // 40px
+
+// 字体
+$font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+$font-size-base: 14px;
+$font-size-lg: 16px;
+$font-size-sm: 12px;
+
+// 边框圆角
+$border-radius: 8px;
+$border-radius-sm: 4px;
+$border-radius-lg: 12px;
+
+// 阴影
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+$box-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.1);
