@@ -39,8 +39,11 @@ const props = defineProps<{
 const statusStore = useStatusStore()
 
 const isOnline = computed(() => {
-  if (!props.status) return false
-  return props.status.application !== '没有相关记录' && props.status.update_time !== '0001-01-01T00:00:00Z'
+  if (!props.device || !props.status) return false
+  // 使用存储中的在线状态，确保与超时逻辑一致
+  if (props.device === 'computer') return statusStore.isComputerOnline
+  if (props.device === 'phone') return statusStore.isPhoneOnline
+  return false
 })
 
 const formatTime = statusStore.formatTime

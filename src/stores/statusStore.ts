@@ -7,6 +7,25 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 
 dayjs.extend(relativeTime)
 
+// 离线超时阈值（分钟），从环境变量读取，默认5分钟
+const OFFLINE_TIMEOUT_MINUTES = parseInt(
+  import.meta.env.VITE_OFFLINE_TIMEOUT_MINUTES || '5',
+  10
+)
+
+/**
+ * 检查更新时间是否超时
+ */
+function isUpdateTimeout(updateTime: string, thresholdMinutes: number): boolean {
+  if (!updateTime || updateTime === '0001-01-01T00:00:00Z') {
+    return true // 默认值视为超时（离线）
+  }
+  const now = dayjs()
+  const updated = dayjs(updateTime)
+  const diffMinutes = now.diff(updated, 'minute')
+  return diffMinutes > thresholdMinutes
+}
+
 export const useStatusStore = defineStore('status', () => {
   // 原始设备状态列表
   const deviceList = ref<DeviceStatus[]>([])
@@ -19,18 +38,25 @@ export const useStatusStore = defineStore('status', () => {
   const computerStatus = computed(() => deviceList.value.find(d => d.device === 'computer'))
   const phoneStatus = computed(() => deviceList.value.find(d => d.device === 'phone'))
 
-  // 判断在线状态
+  // 判断在线状态（考虑超时）
   const isComputerOnline = computed(() => {
     const status = computerStatus.value
     if (!status) return false
-    // 如果 application 不是“没有相关记录”且 update_time 不是默认值，则认为在线
-    return status.application !== '没有相关记录' && status.update_time !== '0001-01-01T00:00:00Z'
+    // 如果 application 是“没有相关记录”或 update_time 是默认值，则离线
+    if (status.application === '没有相关记录' || status.update_time === '0001-01-01T00:00:00Z') {
+      return false
+    }
+    // 检查是否超时
+    return !isUpdateTimeout(status.update_time, OFFLINE_TIMEOUT_MINUTES)
   })
 
   const isPhoneOnline = computed(() => {
     const status = phoneStatus.value
     if (!status) return false
-    return status.application !== '没有相关记录' && status.update_time !== '0001-01-01T00:00:00Z'
+    if (status.application === '没有相关记录' || status.update_time === '0001-01-01T00:00:00Z') {
+      return false
+    }
+    return !isUpdateTimeout(status.update_time, OFFLINE_TIMEOUT_MINUTES)
   })
 
   // 主设备（根据业务规则）
