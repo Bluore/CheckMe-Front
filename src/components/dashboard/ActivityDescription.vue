@@ -1,11 +1,12 @@
 <template>
   <div class="activity-card">
-    <h3>当前活动</h3>
+    <h3>我正在。。。</h3>
     <div class="activity-content">
       <el-icon class="activity-icon"><i-ep-star /></el-icon>
       <p class="activity-text">{{ activity }}</p>
     </div>
-    <p class="hint">bluore正在使用 {{ activity }} 进行工作或娱乐。</p>
+    <p class="hint">正在玩 {{ activity }} </p>
+    <p class="hint">看到我摆烂记得提醒我学习(￣y▽,￣)╭ </p>
   </div>
 </template>
 

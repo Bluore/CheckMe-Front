@@ -7,16 +7,41 @@
       </el-icon>
       <h3>{{ device === 'computer' ? '电脑' : '手机' }}</h3>
       <el-tag :type="isOnline ? 'success' : 'info'" size="small">
-        {{ isOnline ? '在线' : '离线' }}
+        {{ isOnline ? '活着' : '似了' }}
       </el-tag>
     </div>
 
     <div v-if="status" class="details">
-      <p><strong>应用:</strong> {{ status.application }}</p>
-      <p><strong>开始时间:</strong> {{ formatTime(status.start_time) }}</p>
-      <p><strong>最后更新:</strong> {{ fromNow(status.update_time) }}</p>
-      <p v-if="status.ip"><strong>IP:</strong> {{ status.ip }}</p>
-      <p v-if="status.duration"><strong>持续时间:</strong> {{ status.duration }} 秒</p>
+      <!-- 四宫格 -->
+      <div class="grid-container">
+        <div class="grid-item app">
+          <el-icon class="grid-icon"><i-ep-cpu /></el-icon>
+          <div class="grid-label">应用</div>
+          <div class="grid-value">{{ displayAppName(status) }}</div>
+        </div>
+        <div class="grid-item charge">
+          <el-icon class="grid-icon"><i-ep-odometer /></el-icon>
+          <div class="grid-label">电量</div>
+          <div class="grid-value">{{ displayCharge }}</div>
+        </div>
+        <div class="grid-item music">
+          <el-icon class="grid-icon"><i-ep-headset /></el-icon>
+          <div class="grid-label">音乐</div>
+          <div class="grid-value">{{ displayMusic }}</div>
+        </div>
+        <div class="grid-item location">
+          <el-icon class="grid-icon"><i-ep-location /></el-icon>
+          <div class="grid-label">位置</div>
+          <div class="grid-value">{{ displayLocation }}</div>
+        </div>
+      </div>
+      <!-- 其他信息 -->
+      <div class="other-info">
+        <p><strong>开始时间:</strong> {{ formatTime(status.start_time) }}</p>
+        <p><strong>最后更新:</strong> {{ fromNow(status.update_time) }}</p>
+        <p v-if="status.ip"><strong>IP:</strong> {{ status.ip }}</p>
+        <p v-if="status.duration"><strong>持续时间:</strong> {{ status.duration }} 秒</p>
+      </div>
     </div>
     <div v-else class="no-data">
       暂无数据
@@ -26,7 +51,14 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Monitor as IEpMonitor, Iphone as IEpIphone } from '@element-plus/icons-vue'
+import {
+  Monitor as IEpMonitor,
+  Iphone as IEpIphone,
+  Cpu as IEpCpu,
+  Odometer as IEpOdometer,
+  Headset as IEpHeadset,
+  Location as IEpLocation,
+} from '@element-plus/icons-vue'
 import { useStatusStore } from '@/stores/statusStore'
 import type { DeviceStatus, DeviceType } from '@/services/types'
 
@@ -48,6 +80,26 @@ const isOnline = computed(() => {
 
 const formatTime = statusStore.formatTime
 const fromNow = statusStore.fromNow
+const displayAppName = statusStore.displayAppName
+
+// 计算显示字段
+const displayCharge = computed(() => {
+  const charge = props.status?.data?.charge
+  if (charge === undefined || charge === null) return '未知'
+  return `${charge}%`
+})
+
+const displayMusic = computed(() => {
+  const data = props.status?.data
+  if (!data) return '未播放音乐'
+  if (data.is_hide_music) return '未播放音乐'
+  return data.music_name || '未知'
+})
+
+const displayLocation = computed(() => {
+  const location = props.status?.data?.location
+  return location || '未知'
+})
 </script>
 
 <style scoped lang="scss">
@@ -87,9 +139,60 @@ const fromNow = statusStore.fromNow
   }
 
   .details {
-    p {
-      margin: 8px 0;
-      color: #555;
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+
+      .grid-item {
+        padding: 15px;
+        border-radius: 12px;
+        color: white;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100px;
+
+        .grid-icon {
+          font-size: 28px;
+          margin-bottom: 8px;
+        }
+
+        .grid-label {
+          font-size: 14px;
+          opacity: 0.9;
+          margin-bottom: 4px;
+        }
+
+        .grid-value {
+          font-size: 18px;
+          font-weight: bold;
+          word-break: break-word;
+        }
+
+        &.app {
+          background: linear-gradient(135deg, #409EFF, #66b1ff);
+        }
+        &.charge {
+          background: linear-gradient(135deg, #67C23A, #85ce61);
+        }
+        &.music {
+          background: linear-gradient(135deg, #B37FEB, #c396ed);
+        }
+        &.location {
+          background: linear-gradient(135deg, #E6A23C, #ebb563);
+        }
+      }
+    }
+
+    .other-info {
+      p {
+        margin: 8px 0;
+        color: #555;
+      }
     }
   }
 

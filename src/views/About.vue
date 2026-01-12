@@ -1,14 +1,15 @@
 <template>
   <div class="about-page">
     <h1>关于</h1>
-    <p class="subtitle">bluore在线状态监控系统</p>
+    <p class="subtitle">监视我？</p>
 
     <div class="sections">
       <section-card title="项目介绍">
-        <p>本网站是一个用于监控网站管理员（bluore）实时活动状态的前端应用。通过直观的界面展示bluore当前在做什么、在线设备（电脑/手机）以及历史活动记录，方便访客了解bluore动态。</p>
-        <p>核心价值：实时性、透明度、历史追溯。</p>
+        <p>看见我打开铲铲说明我在上课，打开B站说明我在厕所没出来，如果我🛫说明我要睡觉🛌了，如果我似太久了快联系我👻</p>
         <p>前端支持: DeepSeek-chat-v3.2</p>
         <p>后端支持: 代码纯手工无添加，零糖零脂零智能体</p>
+        <p>手机端统计: ROOT + KSU + MKshell</p>
+        <p>电脑端统计: python + TkinterUI</p>
       </section-card>
 
       <section-card title="技术栈">
@@ -35,8 +36,9 @@
 
       <section-card title="更新日志">
         <ul>
-          <li><strong>v1.0.0</strong> (2026-01-11) - 初始版本发布，实现基本功能。</li>
-          <li><strong>v0.1.0</strong> (2026-01-10) - 项目启动，完成文档编写。</li>
+          <li><strong>v1.0.0</strong> (2026-01-11) - 嘿嘿，智能体加持前端开发，反正代码能跑了，功能能用了ヾ(≧▽≦*)o</li>
+          <li><strong>v0.1.0</strong> (2026-01-10) - 项目启动，完成后端Golang的基本的骨架，纯手工写累丝了￣へ￣</li>
+          <li><strong>v0.0.0</strong> (2025-??-??) - 项目构思，其实很早之前就想写了，懒癌发作，没有动工</li>
         </ul>
       </section-card>
 

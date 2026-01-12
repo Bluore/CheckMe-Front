@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed, onUnmounted } from 'vue'
 import { fetchStatus } from '@/services/api'
-import type { DeviceStatus, DeviceType } from '@/services/types'
+import type { DeviceStatus } from '@/services/types'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 
@@ -37,6 +37,13 @@ export const useStatusStore = defineStore('status', () => {
   // 计算电脑和手机的状态
   const computerStatus = computed(() => deviceList.value.find(d => d.device === 'computer'))
   const phoneStatus = computed(() => deviceList.value.find(d => d.device === 'phone'))
+
+  // 获取显示的应用名称（优先使用 app_name）
+  const displayAppName = (status: DeviceStatus | null) => {
+    if (!status) return '未知'
+    if (status.data?.app_name) return status.data.app_name
+    return status.application || '未知'
+  }
 
   // 判断在线状态（考虑超时）
   const isComputerOnline = computed(() => {
@@ -129,5 +136,6 @@ export const useStatusStore = defineStore('status', () => {
     stopPolling,
     formatTime,
     fromNow,
+    displayAppName,
   }
 })

@@ -3,22 +3,19 @@
     <div class="container">
       <div class="footer-content">
         <div class="copyright">
-          &copy; 2026 bluore在线状态监控系统. 保留所有权利.
+          杂鱼♡～杂鱼♡～
         </div>
         <div class="links">
-          <a href="https://github.com/example" target="_blank">
+          <a href="https://github.com/Bluore" target="_blank">
             <el-icon><i-ep-link /></el-icon> GitHub
           </a>
-          <a href="https://blog.example.com" target="_blank">
+          <a href="https://bluore.top" target="_blank">
             <el-icon><i-ep-link /></el-icon> 博客
           </a>
-          <a href="mailto:admin@example.com">
+          <a href="mailto:1bluore@gmail.com">
             <el-icon><i-ep-message /></el-icon> 联系
           </a>
         </div>
-      </div>
-      <div class="footer-note">
-        本项目仅供学习交流使用，数据来源于模拟 API。
       </div>
     </div>
   </footer>

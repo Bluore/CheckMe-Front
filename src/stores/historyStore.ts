@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { fetchHistory } from '@/services/api'
-import type { DeviceHistory, HistoryRecord, DeviceType } from '@/services/types'
+import type { DeviceHistory } from '@/services/types'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 

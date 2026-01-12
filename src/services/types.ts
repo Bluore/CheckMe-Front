@@ -4,6 +4,18 @@
 export type DeviceType = 'computer' | 'phone'
 
 /**
+ * 设备数据（额外信息）
+ */
+export interface DeviceData {
+  app_name?: string
+  description?: string
+  charge?: number
+  location?: string
+  is_hide_music?: boolean
+  music_name?: string
+}
+
+/**
  * 设备状态（实时）
  */
 export interface DeviceStatus {
@@ -13,6 +25,7 @@ export interface DeviceStatus {
   update_time: string // ISO 8601
   ip?: string
   duration?: number // 秒
+  data?: DeviceData
 }
 
 /**

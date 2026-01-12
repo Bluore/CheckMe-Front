@@ -3,19 +3,20 @@
     <div class="main-content">
       <!-- 主栏 -->
       <div class="primary-column">
-        <h1>在线状态监控 (⓿_⓿)偷看</h1>
+        <h1>视奸我在干什么 O.O</h1>
         <div v-if="statusStore.loading">加载中...</div>
         <div v-else-if="statusStore.error" class="error">
           {{ statusStore.error }}
         </div>
         <div v-else>
-          <avatar-card />
-          <device-status-card
-            :device="primaryDevice"
-            :status="primaryStatus"
-            :is-primary="true"
-          />
           <activity-description :activity="primaryActivity" />
+          <description-card :description="primaryDescription" />
+          <device-status-card
+          :device="primaryDevice"
+          :status="primaryStatus"
+          :is-primary="true"
+          />
+          <avatar-card />
           <live-timer :last-updated="statusStore.lastUpdated" />
         </div>
       </div>
@@ -30,7 +31,7 @@
           :is-primary="false"
         />
         <div v-else class="offline-hint">
-          <p>电脑离线</p>
+          <p>电脑似乎似了？</p>
         </div>
 
         <div class="contact-info">
@@ -56,6 +57,7 @@ import AvatarCard from '@/components/dashboard/AvatarCard.vue'
 import DeviceStatusCard from '@/components/dashboard/DeviceStatusCard.vue'
 import ActivityDescription from '@/components/dashboard/ActivityDescription.vue'
 import LiveTimer from '@/components/dashboard/LiveTimer.vue'
+import DescriptionCard from '@/components/dashboard/DescriptionCard.vue'
 
 const statusStore = useStatusStore()
 const userStore = useUserStore()
@@ -67,7 +69,8 @@ const primaryStatus = computed(() => {
   if (primaryDevice.value === 'phone') return statusStore.phoneStatus ?? null
   return null
 })
-const primaryActivity = computed(() => primaryStatus.value?.application || '无活动')
+const primaryActivity = computed(() => primaryStatus.value?.application || '似乎似了')
+const primaryDescription = computed(() => primaryStatus.value?.data?.description)
 
 // 计算副设备
 const secondaryDevice = computed(() => {
