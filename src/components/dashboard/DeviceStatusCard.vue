@@ -11,7 +11,7 @@
       </el-tag>
     </div>
 
-    <div v-if="status" class="details">
+    <div v-if="status && isPrimary" class="details">
       <!-- 四宫格 -->
       <div class="grid-container">
         <div class="grid-item app">
@@ -36,14 +36,14 @@
         </div>
       </div>
       <!-- 其他信息 -->
-      <div class="other-info">
+      <!-- <div class="other-info">
         <p><strong>开始时间:</strong> {{ formatTime(status.start_time) }}</p>
         <p><strong>最后更新:</strong> {{ fromNow(status.update_time) }}</p>
         <p v-if="status.ip"><strong>IP:</strong> {{ status.ip }}</p>
         <p v-if="status.duration"><strong>持续时间:</strong> {{ status.duration }} 秒</p>
-      </div>
+      </div> -->
     </div>
-    <div v-else class="no-data">
+    <div v-else-if="!status" class="no-data">
       暂无数据
     </div>
   </div>
@@ -78,8 +78,8 @@ const isOnline = computed(() => {
   return false
 })
 
-const formatTime = statusStore.formatTime
-const fromNow = statusStore.fromNow
+// const formatTime = statusStore.formatTime
+// const fromNow = statusStore.fromNow
 const displayAppName = statusStore.displayAppName
 
 // 计算显示字段
@@ -174,16 +174,20 @@ const displayLocation = computed(() => {
         }
 
         &.app {
-          background: linear-gradient(135deg, #409EFF, #66b1ff);
+          background: linear-gradient(135deg, #c4e2ff, #66b1ff);
+          color: #1573b1;
         }
         &.charge {
-          background: linear-gradient(135deg, #67C23A, #85ce61);
+          background: linear-gradient(135deg, #ddfbce, #85ce61);
+          color: #529c2d;
         }
         &.music {
-          background: linear-gradient(135deg, #B37FEB, #c396ed);
+          background: linear-gradient(135deg, #e7d1ff, #c396ed);
+          color: #8654b5;
         }
         &.location {
-          background: linear-gradient(135deg, #E6A23C, #ebb563);
+          background: linear-gradient(135deg, #ffecd0, #ebb563);
+          color: #c88b30;
         }
       }
     }

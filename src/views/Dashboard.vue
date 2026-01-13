@@ -9,8 +9,8 @@
           {{ statusStore.error }}
         </div>
         <div v-else>
-          <activity-description :activity="primaryActivity" />
           <description-card :description="primaryDescription" />
+          <activity-description :activity="primaryActivity" />
           <device-status-card
           :device="primaryDevice"
           :status="primaryStatus"
@@ -35,8 +35,8 @@
         </div>
 
         <div class="contact-info">
-          <h3>联系方式</h3>
-          <p>邮箱: {{ userStore.profile.email }}</p>
+          <h3>来找我玩叭</h3>
+          <p>Email: {{ userStore.profile.email }}</p>
           <p>
             GitHub:
             <a :href="userStore.profile.socialLinks.github" target="_blank">
@@ -69,7 +69,10 @@ const primaryStatus = computed(() => {
   if (primaryDevice.value === 'phone') return statusStore.phoneStatus ?? null
   return null
 })
-const primaryActivity = computed(() => primaryStatus.value?.application || '似乎似了')
+const primaryActivity = computed(() => {
+  if (!primaryStatus.value) return '似乎似了'
+  return statusStore.displayAppName(primaryStatus.value)
+})
 const primaryDescription = computed(() => primaryStatus.value?.data?.description)
 
 // 计算副设备

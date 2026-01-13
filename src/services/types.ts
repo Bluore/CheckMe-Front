@@ -36,6 +36,7 @@ export interface HistoryRecord {
   application: string
   start_time: string
   update_time: string
+  data?: DeviceData
 }
 
 /**

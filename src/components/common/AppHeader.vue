@@ -3,7 +3,7 @@
     <div class="container">
       <div class="logo">
         <el-icon class="logo-icon"><i-ep-monitor /></el-icon>
-        <span class="logo-text">视奸我？</span>
+        <span class="logo-text">CheckMe</span>
       </div>
       <nav class="nav">
         <router-link to="/" class="nav-link" active-class="active">

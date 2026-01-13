@@ -1,6 +1,6 @@
 <template>
   <div class="activity-card">
-    <h3>我正在。。。</h3>
+    <!-- <h3>我正在。。。</h3> -->
     <div class="activity-content">
       <el-icon class="activity-icon"><i-ep-star /></el-icon>
       <p class="activity-text">{{ activity }}</p>

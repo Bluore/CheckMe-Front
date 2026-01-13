@@ -1,11 +1,9 @@
 <template>
   <div class="description-card">
-    <h3>描述</h3>
     <div class="description-content">
       <el-icon class="description-icon"><i-ep-document /></el-icon>
       <p class="description-text">{{ displayDescription }}</p>
     </div>
-    <p class="hint">这是当前活动的详细说明</p>
   </div>
 </template>
 

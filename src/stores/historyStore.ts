@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { fetchHistory } from '@/services/api'
-import type { DeviceHistory } from '@/services/types'
+import type { DeviceHistory, HistoryRecord } from '@/services/types'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 
@@ -38,6 +38,12 @@ export const useHistoryStore = defineStore('history', () => {
     return device ? device.record : []
   })
 
+  // 获取显示的应用名称（优先使用 app_name）
+  function displayAppName(record: HistoryRecord) {
+    if (record.data?.app_name) return record.data.app_name
+    return '神秘应用'
+  }
+
   // 格式化时间
   function formatTime(iso: string) {
     return dayjs(iso).format('YYYY-MM-DD HH:mm:ss')
@@ -65,6 +71,7 @@ export const useHistoryStore = defineStore('history', () => {
     loading,
     error,
     loadHistory,
+    displayAppName,
     formatTime,
     fromNow,
     duration,

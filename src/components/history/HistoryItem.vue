@@ -5,7 +5,7 @@
         <i-ep-monitor v-if="device === 'computer'" />
         <i-ep-iphone v-else />
       </el-icon>
-      <span class="application">{{ record.application }}</span>
+      <span class="application">{{ displayAppName(record) }}</span>
       <el-tag size="small" :type="record.application === '没有相关记录' ? 'info' : 'success'">
         {{ record.application === '没有相关记录' ? '离线' : '在线' }}
       </el-tag>
@@ -32,7 +32,7 @@ const props = defineProps<{
 }>()
 
 const historyStore = useHistoryStore()
-const { formatTime, fromNow, duration } = historyStore
+const { formatTime, fromNow, duration, displayAppName } = historyStore
 </script>
 
 <style scoped lang="scss">

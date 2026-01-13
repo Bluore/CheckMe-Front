@@ -4,7 +4,7 @@
     <div class="timer-content">
       <el-icon class="timer-icon"><i-ep-clock /></el-icon>
       <div class="timer-text">
-        <p>最近更新于 <span class="time">{{ fromNow(lastUpdated) }}</span></p>
+        <!-- <p>最近更新于 <span class="time">{{ fromNow(lastUpdated) }}</span></p> -->
         <p class="next-update">下次更新在 {{ nextUpdateCountdown }} 秒后</p>
       </div>
     </div>
@@ -14,7 +14,7 @@
       :show-text="false"
       :color="progressColor"
     />
-    <p class="hint">状态每30秒自动刷新</p>
+    <!-- <p class="hint">状态每30秒自动刷新</p> -->
   </div>
 </template>
 
@@ -44,7 +44,7 @@ onUnmounted(() => {
   if (timer.value !== null) clearInterval(timer.value)
 })
 
-const fromNow = (iso: string) => dayjs(iso).fromNow()
+// const fromNow = (iso: string) => dayjs(iso).fromNow()
 
 // 距离下次更新（30秒周期）
 const nextUpdateCountdown = computed(() => {

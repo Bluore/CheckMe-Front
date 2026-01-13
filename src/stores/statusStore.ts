@@ -42,7 +42,7 @@ export const useStatusStore = defineStore('status', () => {
   const displayAppName = (status: DeviceStatus | null) => {
     if (!status) return '未知'
     if (status.data?.app_name) return status.data.app_name
-    return status.application || '未知'
+    return '神秘应用'
   }
 
   // 判断在线状态（考虑超时）
