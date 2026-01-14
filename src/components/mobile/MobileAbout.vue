@@ -1,6 +1,6 @@
 <template>
-  <div class="about-page">
-    <h1>关于</h1>
+  <div class="mobile-about">
+    <h2>关于</h2>
     <p class="subtitle">监视我？</p>
 
     <div class="sections">
@@ -60,23 +60,27 @@ const userStore = useUserStore()
 </script>
 
 <style scoped lang="scss">
-.about-page {
-  padding: 20px;
+@use '@/styles/variables' as *;
 
-  h1 {
+.mobile-about {
+  padding: $spacing-3;
+
+  h2 {
     margin-top: 0;
-    color: #333;
+    color: $primary-color;
+    font-size: 20px;
   }
 
   .subtitle {
-    color: #666;
-    margin-bottom: 30px;
+    color: $text-secondary;
+    margin-bottom: $spacing-3;
+    font-size: 14px;
   }
 
   .sections {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-3;
   }
 }
 </style>

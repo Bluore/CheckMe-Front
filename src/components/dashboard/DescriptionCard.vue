@@ -16,7 +16,7 @@ const props = defineProps<{
 }>()
 
 const displayDescription = computed(() => {
-  return props.description?.trim() || '暂无描述'
+  return props.description?.trim() || '啊呜~ 这里什么都没有描述喵~'
 })
 </script>
 

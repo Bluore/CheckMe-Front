@@ -1,14 +1,14 @@
 <template>
-  <div class="history-page">
-    <h1>历史记录</h1>
+  <div class="mobile-history">
+    <h2>历史记录</h2>
     <p class="subtitle">最近2小时的活动记录</p>
 
-    <div v-if="historyStore.loading">加载中...</div>
+    <div v-if="historyStore.loading" class="loading">加载中...</div>
     <div v-else-if="historyStore.error" class="error">
       {{ historyStore.error }}
     </div>
     <div v-else>
-      <el-tabs v-model="activeTab" type="border-card">
+      <el-tabs v-model="activeTab" type="card" class="mobile-tabs">
         <el-tab-pane label="电脑记录" name="computer">
           <history-list :records="historyStore.computerHistory" device="computer" />
         </el-tab-pane>
@@ -34,24 +34,43 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
-.history-page {
-  padding: 20px;
+@use '@/styles/variables' as *;
 
-  h1 {
+.mobile-history {
+  padding: $spacing-3;
+
+  h2 {
     margin-top: 0;
-    color: #333;
+    color: $primary-color;
+    font-size: 20px;
   }
 
   .subtitle {
-    color: #666;
-    margin-bottom: 30px;
+    color: $text-secondary;
+    margin-bottom: $spacing-3;
+    font-size: 14px;
+  }
+
+  .loading, .error {
+    text-align: center;
+    padding: $spacing-4;
+    color: $text-secondary;
   }
 
   .error {
-    color: #f56c6c;
-    padding: 10px;
-    background: #fef0f0;
-    border-radius: 4px;
+    color: $danger-color;
+  }
+
+  .mobile-tabs {
+    :deep(.el-tabs__nav) {
+      width: 100%;
+      display: flex;
+    }
+
+    :deep(.el-tabs__item) {
+      flex: 1;
+      text-align: center;
+    }
   }
 }
 </style>

@@ -21,9 +21,9 @@
         </a>
         <a
           v-if="userStore.profile.socialLinks.wechat"
-          href="javascript:;"
+          href="tencent://message/?uin=2260762800&Site=qq&Menu=yes"
         >
-          <el-icon><i-ep-link /></el-icon> WeChat
+          <el-icon><i-ep-link /></el-icon> QQ
         </a>
         <a
           v-if="userStore.profile.socialLinks.blog"

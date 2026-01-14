@@ -1,16 +1,21 @@
 <template>
   <div id="app">
-    <app-header />
-    <main class="main-content">
+    <app-header v-if="!isMobileRoute" />
+    <main class="main-content" :class="{ 'mobile-main': isMobileRoute }">
       <router-view />
     </main>
-    <app-footer />
+    <app-footer v-if="!isMobileRoute" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 import AppHeader from '@/components/common/AppHeader.vue'
 import AppFooter from '@/components/common/AppFooter.vue'
+
+const route = useRoute()
+const isMobileRoute = computed(() => route.path.startsWith('/mobile'))
 </script>
 
 <style lang="scss">
@@ -26,5 +31,11 @@ import AppFooter from '@/components/common/AppFooter.vue'
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+
+  &.mobile-main {
+    padding: 0;
+    max-width: none;
+    margin: 0;
+  }
 }
 </style>

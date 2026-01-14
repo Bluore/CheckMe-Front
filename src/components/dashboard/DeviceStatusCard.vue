@@ -1,5 +1,5 @@
 <template>
-  <div class="device-card" :class="{ online: isOnline, primary: isPrimary }">
+  <div class="device-card" :class="{ online: isOnline, primary: isPrimary, mobile: mobile }">
     <div class="header">
       <el-icon class="device-icon">
         <i-ep-monitor v-if="device === 'computer'" />
@@ -66,6 +66,7 @@ const props = defineProps<{
   device: DeviceType | null
   status: DeviceStatus | null
   isPrimary: boolean
+  mobile?: boolean
 }>()
 
 const statusStore = useStatusStore()
@@ -118,6 +119,45 @@ const displayLocation = computed(() => {
   &.primary {
     border-color: #3498db;
     border-width: 3px;
+  }
+
+  &.mobile {
+    padding: 16px;
+    margin-bottom: 16px;
+
+    .header {
+      margin-bottom: 12px;
+
+      .device-icon {
+        font-size: 20px;
+      }
+
+      h3 {
+        font-size: 16px;
+      }
+    }
+
+    .details .grid-container {
+      gap: 12px;
+      margin-bottom: 16px;
+
+      .grid-item {
+        padding: 12px;
+        min-height: 80px;
+
+        .grid-icon {
+          font-size: 22px;
+        }
+
+        .grid-label {
+          font-size: 12px;
+        }
+
+        .grid-value {
+          font-size: 16px;
+        }
+      }
+    }
   }
 
   .header {
