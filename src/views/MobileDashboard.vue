@@ -10,7 +10,9 @@
 
     <!-- 主要内容区域，根据当前标签显示 -->
     <div class="mobile-content">
-      <component :is="currentComponent" />
+      <transition name="mobile-tab" mode="out-in">
+        <component :is="currentComponent" :key="activeTab" />
+      </transition>
     </div>
 
     <!-- 底部标签栏 -->
@@ -77,5 +79,28 @@ const currentComponent = computed(() => tabComponents[activeTab.value])
   overflow-y: auto;
   padding: $spacing-3;
   min-height: 0; /* 修复 flex 收缩问题 */
+}
+
+// 标签切换动画
+.mobile-tab-enter-active,
+.mobile-tab-leave-active {
+  transition: all 0.3s ease;
+  will-change: transform, opacity;
+}
+
+.mobile-tab-enter-from {
+  opacity: 0;
+  transform: translate3d(30px, 0, 0);
+}
+
+.mobile-tab-leave-to {
+  opacity: 0;
+  transform: translate3d(-30px, 0, 0);
+}
+
+.mobile-tab-enter-to,
+.mobile-tab-leave-from {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 </style>
