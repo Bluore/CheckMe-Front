@@ -40,12 +40,14 @@ const userStore = useUserStore()
 @use '@/styles/variables' as *;
 
 .app-header {
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: rgba(173, 216, 230, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   padding: $spacing-2 0;
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 
   .container {
     display: flex;

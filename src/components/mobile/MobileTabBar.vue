@@ -51,12 +51,13 @@ const switchTab = (tabId: string) => {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: #fff;
-  border-top: 1px solid $border-color;
+  background: rgba(173, 216, 230, 0.3);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
   padding: $spacing-1 0;
   flex-shrink: 0;
   height: 60px;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.1);
   position: relative;
 
   .tab-indicator {

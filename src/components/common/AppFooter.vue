@@ -29,10 +29,12 @@ import { Link as IEpLink, Message as IEpMessage } from '@element-plus/icons-vue'
 @use '@/styles/variables' as *;
 
 .app-footer {
-  background: #2c3e50;
-  color: #ecf0f1;
+  background: rgba(173, 216, 230, 0.3);
+  backdrop-filter: blur(10px);
+  color: #2c3e50;
   padding: $spacing-4 0;
   margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
 
   .container {
     max-width: 1200px;

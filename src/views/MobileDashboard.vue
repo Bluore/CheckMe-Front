@@ -58,9 +58,11 @@ const currentComponent = computed(() => tabComponents[activeTab.value])
   align-items: center;
   justify-content: space-between;
   padding: $spacing-2 $spacing-3;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background: rgba(173, 216, 230, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   flex-shrink: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 
   h1 {
     font-size: 20px;

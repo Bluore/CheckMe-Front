@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <background-animation />
     <app-header v-if="!isMobileRoute" />
     <main class="main-content" :class="{ 'mobile-main': isMobileRoute }">
       <router-view />
@@ -13,6 +14,7 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import AppHeader from '@/components/common/AppHeader.vue'
 import AppFooter from '@/components/common/AppFooter.vue'
+import BackgroundAnimation from '@/components/common/BackgroundAnimation.vue'
 
 const route = useRoute()
 const isMobileRoute = computed(() => route.path.startsWith('/mobile'))
@@ -23,6 +25,8 @@ const isMobileRoute = computed(() => route.path.startsWith('/mobile'))
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
 .main-content {
