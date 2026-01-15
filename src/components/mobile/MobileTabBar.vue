@@ -9,20 +9,12 @@
       @click="switchTab(tab.id)"
       :data-index="index"
     >
-      <el-icon class="tab-icon">
-        <component :is="tab.icon" />
-      </el-icon>
       <span class="tab-label">{{ tab.label }}</span>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import {
-  House as IEpHouse,
-  Timer as IEpTimer,
-  InfoFilled as IEpInfoFilled,
-} from '@element-plus/icons-vue'
 import { computed } from 'vue'
 
 const props = defineProps<{
@@ -34,9 +26,9 @@ const emit = defineEmits<{
 }>()
 
 const tabs = [
-  { id: 'home', label: '首页', icon: IEpHouse },
-  { id: 'history', label: '历史', icon: IEpTimer },
-  { id: 'about', label: '关于', icon: IEpInfoFilled },
+  { id: 'home', label: '首页' },
+  { id: 'history', label: '历史' },
+  { id: 'about', label: '关于' },
 ]
 
 const activeTab = computed(() => props.modelValue)
@@ -69,12 +61,13 @@ const switchTab = (tabId: string) => {
 
   .tab-indicator {
     position: absolute;
-    bottom: 6px;
+    top: 10%;
     left: 0;
     width: calc(100% / 3);
-    height: 4px;
-    background-color: rgba($primary-color, 0.7);
-    border-radius: 2px;
+    height: 80%;
+    background-color: rgba($primary-color, 0.25);
+    border: 1px solid rgba($primary-color, 0.3);
+    border-radius: 8px;
     transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     z-index: 1;
@@ -108,18 +101,10 @@ const switchTab = (tabId: string) => {
       transform: scale(0.98);
     }
 
-    .tab-icon {
-      font-size: 20px;
-      margin-bottom: 4px;
-      transition: transform 0.2s;
-    }
-
-    &.active .tab-icon {
-      transform: scale(1.1);
-    }
 
     .tab-label {
-      font-size: 12px;
+      font-size: 18px;
+      font-weight: 500;
       transition: font-weight 0.2s;
     }
   }
