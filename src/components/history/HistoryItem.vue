@@ -39,7 +39,9 @@ const { formatTime, fromNow, duration, displayAppName } = historyStore
 .history-item {
   padding: 20px;
   margin-bottom: 15px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   border-left: 5px solid #3498db;

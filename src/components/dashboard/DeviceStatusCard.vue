@@ -16,22 +16,22 @@
       <div class="grid-container">
         <div class="grid-item app">
           <el-icon class="grid-icon"><i-ep-cpu /></el-icon>
-          <div class="grid-label">应用</div>
+          <div class="grid-label">正在使用</div>
           <div class="grid-value">{{ displayAppName(status) }}</div>
         </div>
         <div class="grid-item charge">
           <el-icon class="grid-icon"><i-ep-odometer /></el-icon>
-          <div class="grid-label">电量</div>
+          <div class="grid-label">当前电量</div>
           <div class="grid-value">{{ displayCharge }}</div>
         </div>
         <div class="grid-item music">
           <el-icon class="grid-icon"><i-ep-headset /></el-icon>
-          <div class="grid-label">音乐</div>
+          <div class="grid-label">正在播放</div>
           <div class="grid-value">{{ displayMusic }}</div>
         </div>
         <div class="grid-item location">
           <el-icon class="grid-icon"><i-ep-location /></el-icon>
-          <div class="grid-label">位置</div>
+          <div class="grid-label">IP属地</div>
           <div class="grid-value">{{ displayLocation }}</div>
         </div>
       </div>
@@ -145,6 +145,8 @@ const displayLocation = computed(() => {
       .grid-item {
         padding: 12px;
         min-height: 80px;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
 
         .grid-icon {
           font-size: 22px;
@@ -196,6 +198,8 @@ const displayLocation = computed(() => {
         align-items: center;
         justify-content: center;
         min-height: 100px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
 
         .grid-icon {
           font-size: 28px;
@@ -215,20 +219,24 @@ const displayLocation = computed(() => {
         }
 
         &.app {
-          background: linear-gradient(135deg, #c4e2ff, #66b1ff);
+          background: linear-gradient(135deg, rgba(196, 226, 255, 0.4), rgba(102, 177, 255, 0.4));
           color: #1573b1;
+          border: 3px solid #acd8ff;
         }
         &.charge {
-          background: linear-gradient(135deg, #ddfbce, #85ce61);
+          background: linear-gradient(135deg, rgba(221, 251, 206, 0.4), rgba(133, 206, 97, 0.4));
           color: #529c2d;
+          border: 3px solid #caeeb3;
         }
         &.music {
-          background: linear-gradient(135deg, #e7d1ff, #c396ed);
+          background: linear-gradient(135deg, rgba(231, 209, 255, 0.4), rgba(195, 150, 237, 0.4));
           color: #8654b5;
+          border: 3px solid #e1c2ff;
         }
         &.location {
-          background: linear-gradient(135deg, #ffecd0, #ebb563);
+          background: linear-gradient(135deg, rgba(255, 236, 208, 0.4), rgba(235, 181, 99, 0.4));
           color: #c88b30;
+          border: 3px solid #ffe7c2;
         }
       }
     }

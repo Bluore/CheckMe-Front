@@ -67,7 +67,7 @@
       </div>
 
       <!-- 头像卡片 -->
-      <avatar-card class="mobile-card" />
+      <!-- <avatar-card class="mobile-card" /> -->
 
     </div>
   </div>

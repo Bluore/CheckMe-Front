@@ -53,5 +53,24 @@ onMounted(() => {
     background: #fef0f0;
     border-radius: 4px;
   }
+
+  :deep(.el-tabs--border-card) {
+    background: transparent;
+    backdrop-filter: blur(10px);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  :deep(.el-tabs--border-card .el-tabs__header) {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :deep(.el-tabs--border-card .el-tabs__item) {
+    color: #333;
+  }
+
+  :deep(.el-tabs--border-card .el-tabs__item.is-active) {
+    color: #409eff;
+    background-color: rgba(64, 158, 255, 0.1);
+  }
 }
 </style>
