@@ -77,7 +77,6 @@
 import { computed, ref, onMounted, onUnmounted } from 'vue'
 import { useStatusStore } from '@/stores/statusStore'
 import { useUserStore } from '@/stores/userStore'
-import AvatarCard from '@/components/dashboard/AvatarCard.vue'
 import DeviceStatusCard from '@/components/dashboard/DeviceStatusCard.vue'
 import ActivityDescription from '@/components/dashboard/ActivityDescription.vue'
 import LiveTimer from '@/components/dashboard/LiveTimer.vue'
