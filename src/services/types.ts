@@ -13,6 +13,8 @@ export interface DeviceData {
   location?: string
   is_hide_music?: boolean
   music_name?: string
+  type?: string
+  is_disable?: boolean
 }
 
 /**

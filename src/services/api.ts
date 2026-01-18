@@ -40,4 +40,15 @@ export async function updateRecord(token: string, device: string, application: s
   return response.data
 }
 
+/**
+ * 发送通知
+ */
+export async function sendNotification(type: string, msg?: string) {
+  const response = await api.post('/guest/notify', {
+    type,
+    msg,
+  })
+  return response.data
+}
+
 export default api

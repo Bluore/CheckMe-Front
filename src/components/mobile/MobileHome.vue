@@ -9,6 +9,7 @@
       <activity-description
         class="mobile-card"
         :activity="primaryActivity"
+        :type="primaryType"
       />
 
       <!-- 描述卡片 -->
@@ -107,6 +108,7 @@ const primaryActivity = computed(() => {
   return statusStore.displayAppName(primaryStatus.value)
 })
 const primaryDescription = computed(() => primaryStatus.value?.data?.description)
+const primaryType = computed(() => primaryStatus.value?.data?.type)
 
 // 计算副设备
 const secondaryDevice = computed(() => {

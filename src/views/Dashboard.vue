@@ -10,7 +10,7 @@
         </div>
         <div v-else>
           <description-card :description="primaryDescription" />
-          <activity-description :activity="primaryActivity" />
+          <activity-description :activity="primaryActivity" :type="primaryType" />
           <device-status-card
           :device="primaryDevice"
           :status="primaryStatus"
@@ -74,6 +74,7 @@ const primaryActivity = computed(() => {
   return statusStore.displayAppName(primaryStatus.value)
 })
 const primaryDescription = computed(() => primaryStatus.value?.data?.description)
+const primaryType = computed(() => primaryStatus.value?.data?.type)
 
 // 计算副设备
 const secondaryDevice = computed(() => {

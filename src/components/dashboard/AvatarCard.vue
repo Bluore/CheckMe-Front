@@ -12,13 +12,13 @@
         >
           <el-icon><i-ep-link /></el-icon> GitHub
         </a>
-        <a
+        <!-- <a
           v-if="userStore.profile.socialLinks.twitter"
           :href="userStore.profile.socialLinks.twitter"
           target="_blank"
         >
           <el-icon><i-ep-link /></el-icon> Twitter
-        </a>
+        </a> -->
         <a
           v-if="userStore.profile.socialLinks.wechat"
           href="tencent://message/?uin=2260762800&Site=qq&Menu=yes"
