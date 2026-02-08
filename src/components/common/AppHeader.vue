@@ -7,13 +7,13 @@
       </div>
       <nav class="nav">
         <router-link to="/" class="nav-link" active-class="active">
-          <el-icon><i-ep-house /></el-icon> 首页
+          <el-icon><i-ep-house /></el-icon> 概览
+        </router-link>
+        <router-link to="/detail" class="nav-link" active-class="active">
+          <el-icon><i-ep-document /></el-icon> 详情
         </router-link>
         <router-link to="/history" class="nav-link" active-class="active">
-          <el-icon><i-ep-timer /></el-icon> 历史记录
-        </router-link>
-        <router-link to="/about" class="nav-link" active-class="active">
-          <el-icon><i-ep-info-filled /></el-icon> 关于
+          <el-icon><i-ep-timer /></el-icon> 历史
         </router-link>
       </nav>
       <div class="user-info">
@@ -29,8 +29,8 @@ import { useUserStore } from '@/stores/userStore'
 import {
   Monitor as IEpMonitor,
   House as IEpHouse,
+  Document as IEpDocument,
   Timer as IEpTimer,
-  InfoFilled as IEpInfoFilled,
 } from '@element-plus/icons-vue'
 
 const userStore = useUserStore()

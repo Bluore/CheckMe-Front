@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard-overview">
+  <div class="mobile-overview">
     <div v-if="statusStore.loading" class="loading">加载中...</div>
     <div v-else-if="statusStore.error" class="error">
       {{ statusStore.error }}
@@ -103,11 +103,11 @@ const primaryStatus = computed(() => {
 
 // 计算属性
 const description = computed(() => {
-  return primaryStatus.value?.data?.description || '暂无描述'
+  return primaryStatus.value?.data?.description || ''
 })
 
 const appName = computed(() => {
-  return statusStore.displayAppName(primaryStatus.value) || '未知应用'
+  return statusStore.displayAppName(primaryStatus.value) || '一个神秘的应用'
 })
 
 // 弹窗状态
@@ -198,25 +198,22 @@ const stopAutoRefresh = () => {
 <style scoped lang="scss">
 @use '@/styles/variables' as *;
 
-.dashboard-overview {
+.mobile-overview {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 70vh;
-  padding: 40px;
+  min-height: 100%;
+  padding: 20px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
   color: #000000;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  border-radius: 16px;
-  margin: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .overview-content {
   text-align: center;
-  max-width: 600px;
+  max-width: 400px;
   width: 100%;
 }
 
@@ -231,27 +228,27 @@ const stopAutoRefresh = () => {
 }
 
 .description-section {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   
   .description {
-    font-size: 22px;
-    line-height: 1.6;
+    font-size: 18px;
+    line-height: 1.5;
     color: #333;
     margin: 0;
   }
 }
 
 .app-section {
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   
   .using-text {
-    font-size: 18px;
+    font-size: 16px;
     color: #666;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
   
   .app-name {
-    font-size: 36px;
+    font-size: 28px;
     font-weight: bold;
     color: #000;
     line-height: 1.2;
@@ -260,19 +257,19 @@ const stopAutoRefresh = () => {
 
 .buttons-section {
   display: flex;
-  gap: 30px;
+  gap: 20px;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 30px;
   
   .btn {
-    padding: 18px 36px;
-    border-radius: 16px;
-    font-size: 18px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 16px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
     border: none;
-    min-width: 160px;
+    min-width: 120px;
     
     &:active {
       transform: scale(0.98);
@@ -326,7 +323,7 @@ const stopAutoRefresh = () => {
   border-radius: 16px;
   padding: 24px;
   max-width: 90%;
-  width: 400px;
+  width: 320px;
   animation: slideIn 0.3s ease;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
@@ -334,7 +331,7 @@ const stopAutoRefresh = () => {
 .message-modal {
   .modal-title {
     margin: 0 0 16px 0;
-    font-size: 20px;
+    font-size: 18px;
     color: #000;
     text-align: center;
   }

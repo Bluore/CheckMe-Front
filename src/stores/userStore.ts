@@ -6,11 +6,11 @@ export const useUserStore = defineStore('user', () => {
   const profile = ref<UserProfile>({
     name: 'bluore',
     avatar: '/image/avatar.png',
-    email: '1bluore@gmail.com',
+    email: 'a@bluore.top',
     socialLinks: {
       github: 'https://github.com/Bluore',
       twitter: 'https://x.com/a_ekac',
-      wechat: 'wxid_g3fvsh88mecy22',
+      wechat: 'wx',
       blog: 'https://bluore.top',
     },
   })

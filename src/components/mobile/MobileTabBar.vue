@@ -26,9 +26,9 @@ const emit = defineEmits<{
 }>()
 
 const tabs = [
-  { id: 'home', label: '首页' },
+  { id: 'overview', label: '概览' },
+  { id: 'detail', label: '详情' },
   { id: 'history', label: '历史' },
-  { id: 'about', label: '关于' },
 ]
 
 const activeTab = computed(() => props.modelValue)

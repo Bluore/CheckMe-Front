@@ -1,25 +1,25 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Dashboard from '@/views/Dashboard.vue'
+import Detail from '@/views/Detail.vue'
 import History from '@/views/History.vue'
-import About from '@/views/About.vue'
 import MobileDashboard from '@/views/MobileDashboard.vue'
 import { isMobileDevice } from '@/utils/device'
 
 const routes = [
   {
     path: '/',
-    name: 'Dashboard',
+    name: 'Overview',
     component: Dashboard,
+  },
+  {
+    path: '/detail',
+    name: 'Detail',
+    component: Detail,
   },
   {
     path: '/history',
     name: 'History',
     component: History,
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: About,
   },
   {
     path: '/mobile',

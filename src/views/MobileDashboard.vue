@@ -24,20 +24,20 @@
 import { ref, computed, type Component } from 'vue'
 import { useUserStore } from '@/stores/userStore'
 import MobileTabBar from '@/components/mobile/MobileTabBar.vue'
-import MobileHome from '@/components/mobile/MobileHome.vue'
+import MobileOverview from '@/components/mobile/MobileOverview.vue'
+import MobileDetail from '@/components/mobile/MobileDetail.vue'
 import MobileHistory from '@/components/mobile/MobileHistory.vue'
-import MobileAbout from '@/components/mobile/MobileAbout.vue'
 
 const userStore = useUserStore()
 
 // 当前激活的标签
-const activeTab = ref('home')
+const activeTab = ref('overview')
 
 // 标签与组件映射
 const tabComponents: Record<string, Component> = {
-  home: MobileHome,
+  overview: MobileOverview,
+  detail: MobileDetail,
   history: MobileHistory,
-  about: MobileAbout,
 }
 
 const currentComponent = computed(() => tabComponents[activeTab.value])
