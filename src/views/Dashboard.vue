@@ -103,11 +103,11 @@ const primaryStatus = computed(() => {
 
 // 计算属性
 const description = computed(() => {
-  return primaryStatus.value?.data?.description || '暂无描述'
+  return primaryStatus.value?.data?.description || ''
 })
 
 const appName = computed(() => {
-  return statusStore.displayAppName(primaryStatus.value) || '未知应用'
+  return statusStore.displayAppName(primaryStatus.value) || '神秘应用'
 })
 
 // 弹窗状态

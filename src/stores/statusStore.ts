@@ -40,7 +40,7 @@ export const useStatusStore = defineStore('status', () => {
 
   // 获取显示的应用名称（优先使用 app_name）
   const displayAppName = (status: DeviceStatus | null) => {
-    if (!status) return '未知'
+    if (!status) return '似乎似了？'
     if (status.data?.app_name) return status.data.app_name
     return '神秘应用'
   }
